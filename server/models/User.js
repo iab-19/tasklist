@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const taskSchema = require('./Task');
 
 // Define the user schema
 const userSchema = new Schema({
@@ -14,12 +15,7 @@ const userSchema = new Schema({
         required: true,
         minLength: 8,
     },
-    tasks: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: Task,
-        }
-    ],
+    tasks: [taskSchema],
 });
 
 // Hash the password before saving it to the database
