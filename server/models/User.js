@@ -11,7 +11,7 @@ const userSchema = new Schema({
         trim: true,
     },
     password: {
-        stype: String,
+        type: String,
         required: true,
         minLength: 8,
     },
@@ -28,7 +28,7 @@ userSchema.pre('save', async function (next) {
 });
 
 // verify user's password
-userSchema.methonds.isCorrectPassword = async function (password) {
+userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
